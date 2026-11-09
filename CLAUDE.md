@@ -39,10 +39,15 @@ Deadline: Dec 6, 2026 23:59 (planned submission Dec 5). License: MIT.
 
 - Written in this repo: SDF primitives and operations, marching cubes, gem polyhedra and
   seat cutters, settings, mesh checks, volume, STL writer, patterns, recipe language,
-  merge / evolve, photo analyzer, thickness analysis.
+  merge / evolve, photo analyzer, AI merge assistant (prompt, validate-and-retry loop,
+  change view), thickness analysis.
 - Allowed libraries: NumPy, SciPy (convex hull), Pillow, OpenCV (image loading and basic
-  filters), Gradio, three.js, pytest. scikit-image and trimesh only in tests, as
-  independent references.
+  filters), Gradio, three.js, pytest, Anthropic Python SDK (optional: AI merge assistant
+  and photo style description). scikit-image and trimesh only in tests, as independent
+  references.
+- AI features: the API key comes only from the `ANTHROPIC_API_KEY` environment variable
+  (`.env`). Every AI answer must pass the recipe parser before it reaches the engine. The
+  app must work fully without a key. Tests use a fake model and never call the real API.
 - Anything adapted from elsewhere gets a source comment AND an entry in the README
   References. Never copy code from GPL projects (for example JewelCraft) into this MIT repo.
 - Never commit API keys (`.env` is git-ignored) or user-uploaded photos.

@@ -11,16 +11,29 @@ _Last updated: Nov 9, 2026_
 
 The professor approved the idea on Nov 9 and asked for gemstone support. The engine moves
 from height maps to signed distance fields (SDF), which handle stones, prongs and
-through-holes. Feature freeze moved from Nov 22 to Nov 26.
+through-holes. Feature freeze moved from Nov 22 to Nov 26. Also added on Nov 9: the
+**AI merge assistant** (David's request). The full plan is in
+`docs/proposal/RingForge_Proposal_v2.pdf`.
 
 | Stage | Dates | Work | Status |
 |---|---|---|---|
 | 0 | Nov 9 – 10 | Repo, CLAUDE.md, agents, LICENSE, README skeleton, .gitignore, CI | done Nov 9 |
 | 1 | Nov 10 – 13 | SDF engine, own marching cubes, gems (round brilliant), settings (prong, bezel, channel), sizes and metals, STL writer, tests | |
-| 2 | Nov 14 – 17 | Patterns on SDF (grooves, hammered, Voronoi, text, image relief), `.ring` recipe language | |
+| 2 | Nov 14 – 17 | Patterns on SDF (grooves, hammered, Voronoi, text, image relief), `.ring` recipe language, merge / evolve (union, morph, breed) | |
 | 3 | Nov 18 – 21 | Web UI with 3D preview, fast preview (coarse grid / octree), thickness heatmap | |
-| 4 | Nov 22 – 26 | Photo merge analyzer (band + stone detection), merge / evolve. **Feature freeze Nov 26** | |
+| 4 | Nov 22 – 26 | Photo merge analyzer (band + stone detection), AI merge assistant. **Feature freeze Nov 26** | |
 | 5 | Nov 27 – Dec 5 | Bug fixes, README with GIFs and benchmarks, real ring photo. **Submit Dec 5** | |
+
+### AI merge assistant (Stage 4)
+
+The user writes how two designs should be merged ("stone from A, hammered band from B,
+2 mm wide"). The AI (Claude API) gets the recipe grammar, recipe A, recipe B and the
+instruction, and must reply with a recipe only. The recipe parser validates syntax and
+manufacturing rules; on an error, the message goes back to the AI (at most 2 retries).
+The user sees the merged recipe and the changes vs. A and B, and can edit it before
+building. Without `ANTHROPIC_API_KEY` the assistant is hidden; manual merge still works.
+Targets: ≥ 90 % of 20 test instructions give a valid ring within 2 retries; 0 invalid
+recipes reach the engine. Tests must not call the real API (use a fake model).
 
 Only if time: couple rings, ring size from photo. Cut: AR try-on, mesh optimizer.
 
@@ -30,6 +43,7 @@ Only if time: couple rings, ring size from photo. Cut: AR try-on, mesh optimizer
 - [ ] Create the Claude Project "RingForge" with the proposal and instructions (Nov 9)
 - [ ] Collect 20–30 ring photos (own or freely licensed; not committed to the repo) (by Nov 20)
 - [ ] Order a resin 3D print of a RingForge solitaire (by Nov 21)
+- [ ] Create a Claude API key in the Claude Console for the AI features; keep it in `.env`, never commit it (by Nov 21)
 - [ ] Record demo GIFs (Nov 27 – Dec 3)
 
 ## Known numbers (from prototypes in `prototypes/`)
@@ -57,3 +71,5 @@ replaces it with our own and keeps scikit-image as a test reference.
 
 - Oct 28: idea chosen (RingForge), proposal written.
 - Nov 9: professor approved; asked for gem support → engine switched to SDF + marching cubes.
+- Nov 9: added the AI merge assistant (Stage 4); merge / evolve moved to Stage 2 to balance
+  the stages; proposal v2 written (`docs/proposal/`).

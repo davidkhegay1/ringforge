@@ -31,6 +31,10 @@ commit, or the files named in your task). Read the surrounding code as needed.
    primitives, marching cubes, gem polyhedra, mesh checks, STL writer) must be the
    project's own code.
 4. **Safety of the repo.** No API keys, `.env` files, or user-uploaded photos committed.
+   For AI features (AI merge assistant, photo style description): the key is read only from
+   the `ANTHROPIC_API_KEY` environment variable; every AI answer goes through the recipe
+   parser before it reaches the engine, with no bypass path; the retry limit is enforced;
+   the app still works when the key is missing; tests use a fake model, not the real API.
 5. **Readability for a 2nd-year student.** Clear names, short functions, a docstring that
    says what each module does and the formula it uses. Flag code David could not explain.
 
