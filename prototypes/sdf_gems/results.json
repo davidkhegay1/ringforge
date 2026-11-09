@@ -1,0 +1,28 @@
+{
+ "solitaire": {
+  "tris": 281056,
+  "metal_mm3": 248.4,
+  "g_18k": 3.88,
+  "g_silver": 2.57,
+  "watertight": true,
+  "seconds": 33.1,
+  "stone_ct": 1.04,
+  "stone_formula_ct": 1.02
+ },
+ "bezel": {
+  "tris": 335688,
+  "metal_mm3": 300.4,
+  "g_18k": 4.69,
+  "g_silver": 3.11,
+  "watertight": true,
+  "seconds": 19.0
+ },
+ "channel": {
+  "tris": 339980,
+  "metal_mm3": 360.0,
+  "g_18k": 5.62,
+  "g_silver": 3.73,
+  "watertight": true,
+  "seconds": 48.6
+ }
+}
