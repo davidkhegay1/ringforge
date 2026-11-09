@@ -45,6 +45,11 @@ code used), OpenSCAD, build123d. Algorithms: Lorensen & Cline (1987) marching cu
 Tolkowsky (1919) diamond proportions. Services: Claude API by Anthropic (optional AI
 features).
 
+- Inigo Quilez, "Distance functions" and "Smooth minimum", https://iquilezles.org/articles/
+  (formulas for the rounded-box, segment / capsule and cylinder distances and the
+  polynomial smooth minimum, re-derived and written from scratch in `ringforge/sdf.py`).
+- Pappus' centroid theorem, used in the tests for the exact volume of the revolved band.
+
 ## License
 
 MIT, see [LICENSE](LICENSE).
