@@ -4,7 +4,8 @@ _Last updated: Nov 9, 2026_
 
 ## Current stage
 
-**Stage 0: repository setup.** Next: Stage 1 (engine with gems).
+**Stage 0 is done** (repo, agents, LICENSE, README skeleton, CI with a first passing test).
+**Next: Stage 1** (SDF engine with gems), starting Nov 10.
 
 ## Plan (revised Nov 9)
 
@@ -14,7 +15,7 @@ through-holes. Feature freeze moved from Nov 22 to Nov 26.
 
 | Stage | Dates | Work | Status |
 |---|---|---|---|
-| 0 | Nov 9 – 10 | Repo, CLAUDE.md, agents, LICENSE, README skeleton, .gitignore, CI | in progress |
+| 0 | Nov 9 – 10 | Repo, CLAUDE.md, agents, LICENSE, README skeleton, .gitignore, CI | done Nov 9 |
 | 1 | Nov 10 – 13 | SDF engine, own marching cubes, gems (round brilliant), settings (prong, bezel, channel), sizes and metals, STL writer, tests | |
 | 2 | Nov 14 – 17 | Patterns on SDF (grooves, hammered, Voronoi, text, image relief), `.ring` recipe language | |
 | 3 | Nov 18 – 21 | Web UI with 3D preview, fast preview (coarse grid / octree), thickness heatmap | |
@@ -25,7 +26,7 @@ Only if time: couple rings, ring size from photo. Cut: AR try-on, mesh optimizer
 
 ## David's tasks
 
-- [ ] Connect GitHub to Claude, create the `ringforge` repo (Nov 9)
+- [x] Connect GitHub to Claude, create the `ringforge` repo (Nov 9)
 - [ ] Create the Claude Project "RingForge" with the proposal and instructions (Nov 9)
 - [ ] Collect 20–30 ring photos (own or freely licensed; not committed to the repo) (by Nov 20)
 - [ ] Order a resin 3D print of a RingForge solitaire (by Nov 21)
