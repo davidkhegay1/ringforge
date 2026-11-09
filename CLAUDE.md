@@ -20,6 +20,14 @@ Deadline: Dec 6, 2026 23:59 (planned submission Dec 5). License: MIT.
   they find, then update `PROGRESS.md` and commit.
 - **End of every session:** update `PROGRESS.md` (done / next / open problems) and push.
 - **Before submission (and weekly as a dry run):** run the `submission-checker` agent.
+- **Agents:** `code-reviewer`, `geometry-verifier`, `tutor` and `submission-checker` are
+  defined in `.claude/agents/`. Claude Project cloud threads do not load that folder; there,
+  run the same agent by starting a subagent whose instructions are the full text of
+  `.claude/agents/<name>.md` (the part after the `---` header).
+- **In a Claude Project thread:** work on the thread's own branch and open one pull request
+  per piece of work, with `PROGRESS.md` updated in the same pull request. David reviews and
+  merges it. Run one stage at a time, not parallel threads on the same files, so pull
+  requests don't conflict.
 - Commit messages: `area: what changed` (for example `engine: add marching cubes`), each
   ending with the Co-Authored-By trailer for Claude.
 
