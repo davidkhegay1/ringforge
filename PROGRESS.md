@@ -4,8 +4,19 @@ _Last updated: Nov 9, 2026_
 
 ## Current stage
 
-**Stage 0 is done** (repo, agents, LICENSE, README skeleton, CI with a first passing test).
-**Next: Stage 1** (SDF engine with gems), starting Nov 10.
+**Stage 1 in progress** (SDF engine with gems). Stage 0 is done.
+
+### Stage 1 steps
+
+| Step | Work | Status |
+|---|---|---|
+| 1.1 | SDF primitives (sphere, band, capsule, cylinder) and operations (union, intersect, subtract, smooth union); grid sampling and grid volume estimate (`ringforge/sdf.py`, `ringforge/grid.py`) | done Nov 9 (PR) |
+| 1.2 | Own marching cubes (scikit-image as test reference) | next |
+| 1.3 | Mesh checks: signed volume, watertight edge check, binary STL writer | |
+| 1.4 | Round brilliant gem polyhedron, carat estimate, seat cutter | |
+| 1.5 | Settings: prong (positions from stone size), bezel, channel | |
+| 1.6 | Ring sizes (US / KR / JP / mm) and metals (weight, cost) | |
+| 1.7 | Stage review (geometry-verifier, code-reviewer), fixes | |
 
 ## Plan (revised Nov 9)
 
@@ -40,7 +51,7 @@ Only if time: couple rings, ring size from photo. Cut: AR try-on, mesh optimizer
 ## David's tasks
 
 - [x] Connect GitHub to Claude, create the `ringforge` repo (Nov 9)
-- [ ] Create the Claude Project "RingForge" with the proposal and instructions (Nov 9)
+- [x] Create the Claude Project "RingForge" with the proposal and instructions (Nov 9)
 - [ ] Collect 20–30 ring photos (own or freely licensed; not committed to the repo) (by Nov 20)
 - [ ] Order a resin 3D print of a RingForge solitaire (by Nov 21)
 - [ ] Create a Claude API key in the Claude Console for the AI features; keep it in `.env`, never commit it (by Nov 21)
@@ -53,6 +64,8 @@ Only if time: couple rings, ring size from photo. Cut: AR try-on, mesh optimizer
 | Height-map engine, flat band US 7, 4 × 1.5 mm, N = 720 | 354.74 mm³ (exact 354.74), error 0.0013 % |
 | SDF + marching cubes, rounded band 2.3 × 1.7 mm, 0.07 mm grid | −0.076 % vs exact 230.42 mm³ |
 | Same band, 0.035 mm grid | −0.020 % |
+| Stage 1.1: same band, grid volume estimate Σ clamp(0.5 − d/s, 0, 1)·s³ | +0.149 % (0.14 mm), +0.026 % (0.07 mm), +0.007 % (0.035 mm) |
+| Stage 1.1: same band, naive inside-point count | +2.89 % / +0.49 % / −0.82 % (jumps with grid alignment) |
 | Solitaire, 6.5 mm stone, 6 prongs | metal 248.4 mm³ (3.88 g 18k), stone 1.04 ct (industry formula 1.02 ct), 33 s |
 | Bezel + pierced band, 5 mm stone | metal 300.4 mm³ (4.69 g 18k), 19 s |
 | Channel, 9 × 2 mm stones | metal 360.0 mm³ (5.62 g 18k), 49 s |
@@ -66,6 +79,8 @@ replaces it with our own and keeps scikit-image as a test reference.
 - Marching cubes slightly rounds sharp metal edges (stones stay exact). Stretch: dual contouring.
 - Prong positions in the prototype were hand-tuned; Stage 1 computes them from stone size.
 - Patterns (height maps) on top of the SDF band are not tested yet.
+- Grid sampling evaluates every point; 0.035 mm band grid (81 × 607 × 607 = 30 M points)
+  takes 1.5 s for the plain band. Gems with many planes will be slower (octree later).
 
 ## Decisions log
 
